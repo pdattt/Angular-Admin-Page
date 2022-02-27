@@ -1,0 +1,21 @@
+.ni {
+    font-size: 18px;
+    padding-top: 5px;
+    color: rgb(255, 253, 253);
+}
+
+.btn.btn-sm.btn-neutral.confirm{
+    background-color: rgb(3, 180, 3);
+}
+
+.btn.btn-sm.btn-neutral.cancel{
+    background-color:rgb(211, 5, 5);
+}
+
+.btn.btn-sm.btn-neutral.newInput{
+    float: right;
+}
+
+.ng-pristine.ng-invalid {
+    border-color: red;
+}

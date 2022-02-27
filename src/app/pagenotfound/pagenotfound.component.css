@@ -1,0 +1,9 @@
+.card-header {
+    margin-top: 10%;
+    margin-left: 50%;
+    text-align: center;
+}
+
+.card-header:first-child {
+    border-radius: calc(.375rem - 1px);
+}

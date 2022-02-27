@@ -1,0 +1,155 @@
+<div class="row">
+    <div class="col">
+        <div class="card">
+        <!-- Card header -->
+        <div class="card-header border-0">
+            <h3 class="mb-0">Customers Tables</h3>
+            <div>
+                <button (click)="showInput('input-add')" class="btn btn-sm btn-neutral newInput"> Add New </button>
+            </div>
+        </div>
+        
+        <!-- Light table -->
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                    <th scope="col" class="sort" data-sort="name">Avatar</th>
+                    <th scope="col" class="sort" data-sort="name">Name</th>
+                    <th scope="col" class="sort" data-sort="budget">Age</th>
+                    <th scope="col" class="sort" data-sort="status">Email</th>
+                    <th scope="col" class="sort" data-sort="name">Address</th>
+                    <th scope="col" class="sort" data-sort="completion">Phone Number</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="list" *ngIf="customers.length > 0; else noCustomer">
+                    <tr *ngFor="let customer of customers" id={{customer.Id}}>
+                            <td>
+                                <div class="avatar-group">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                        <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg">
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                                {{customer.Name}}
+                            </td>
+                            <td>
+                                {{customer.Age}}
+                            </td>
+                            <td>
+                                {{customer.Email}}
+                            </td><td>
+                                {{customer.Address}}
+                            </td><td>
+                                {{customer.Phone}}
+                            </td>
+                            <td class="text-right">
+                                <div class="dropdown">
+                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a class="dropdown-item" [routerLink]="" (click)="createInputUpdate(customer)">Update</a>
+                                    <a class="dropdown-item" [routerLink]="" (click)="deleteCustomer(customer)"> Delete Customer</a>
+                                    </div>
+                                </div>
+                            </td>
+                    </tr>
+                </tbody>
+            </table>
+            <form (ngSubmit)="onSubmit('input-add')" id="input-add" style="display: none;" name="addForm">
+                <table class="table align-items-center table-flush">
+                    <tr>
+                        <td>
+                            <div class="avatar-group">
+                                <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                    <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg">
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <label for="name"> Name </label>
+                            <input type="text" class="form-control" placeholder="Name" [(ngModel)]="customer.Name" name="Name" required>
+                        </td>
+                        <td>
+                            <label> Age </label>
+                            <input type="number" min="0" class="form-control" placeholder="Age" [(ngModel)]="customer.Age" name="Age" required>
+                        </td>
+                        <td>
+                            <label> Email </label>
+                            <input type="email" class="form-control" placeholder="Email" [(ngModel)]="customer.Email" name="Email" required>
+                        </td>
+                        <td>
+                            <label> Address </label>
+                            <input type="text" class="form-control" placeholder="Address" [(ngModel)]="customer.Address" name="Address" required>
+                        </td>
+                        <td>
+                            <label> Phone </label>
+                            <input type="tel" class="form-control" placeholder="Phone number" [(ngModel)]="customer.Phone" name="Phone" required>
+                        </td>
+                        <td class="text-right">
+                            <div class="col-lg-6 col-5 text-right">
+                                <button type="submit" class="btn btn-sm btn-neutral confirm" id="confirm-btn">
+                                    <i class="ni ni-check-bold"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-neutral cancel" (click)="showInput('input-add')" id="cancel-btn">
+                                    <i class="ni ni-fat-delete"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <form (ngSubmit)="onSubmit('input-update')" id="input-update" style="display: none;" name="updateForm">
+                <table class="table align-items-center table-flush">
+                    <tr>
+                        <td>
+                            <div class="avatar-group">
+                                <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                    <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg">
+                                </a>
+                            </div>
+                            <td>
+                                <label> Name </label>
+                                <input type="text" class="form-control" placeholder="Name" [(ngModel)]="customer.Name" name="Name" required>
+                            </td>
+                            <td>
+                                <label> Age </label>
+                                <input type="number" min="0" class="form-control" placeholder="Age" [(ngModel)]="customer.Age" name="Age" required>
+                            </td>
+                            <td>
+                                <label> Email </label>
+                                <input type="email" class="form-control" placeholder="Email" [(ngModel)]="customer.Email" name="Email" required>
+                            </td>
+                            <td>
+                                <label> Address </label>
+                                <input type="text" class="form-control" placeholder="Address" [(ngModel)]="customer.Address" name="Address" required>
+                            </td>
+                            <td>
+                                <label> Phone </label>
+                                <input type="tel" class="form-control" placeholder="Phone number" [(ngModel)]="customer.Phone" name="Phone" required>
+                            </td>
+                        <td class="text-right">
+                            <div class="col-lg-6 col-5 text-right">
+                                <button type="submit" class="btn btn-sm btn-neutral confirm" id="confirm-btn">
+                                    <i class="ni ni-check-bold"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-neutral cancel" (click)="showInput('input-update');" id="cancel-btn">
+                                    <i class="ni ni-fat-delete"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <ng-template #noCustomer>
+                <h5> There is no customer in the list </h5>
+            </ng-template>
+        </div>
+    </div>
+</div>
+</div>
